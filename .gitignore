@@ -1,0 +1,42 @@
+# Node modules for frontend, backend, and root
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build directories for frontend and backend
+frontend/build/
+frontend/dist/
+backend/build/
+backend/dist/
+
+# Logs
+*.log
+
+# Environment variables
+frontend/.env
+backend/.env
+frontend/.env.local
+backend/.env.local
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Package lock files (if not using them)
+frontend/yarn.lock
+frontend/package-lock.json
+backend/yarn.lock
+backend/package-lock.json
+
+# Temporary files
+*.tmp
+*.swp
+
+# Misc
+*.bak
+*.orig
