@@ -8,10 +8,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f4f7f6;
   color: #333;
+  
+}
+
+.main{
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 /* Container with card centering */
@@ -29,6 +33,7 @@ body {
   padding: 20px;
   margin: 20px auto;
   text-align: center;
+  width: 400px;
 }
 
 /* Heading styling */
@@ -56,20 +61,4 @@ body {
 
 .card input:focus {
   border-color: #007bff;
-}
-
-/* Button styling */
-.card button {
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.card button:hover {
-  background-color: #0056b3;
 }

@@ -29,15 +29,13 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar />
-      <div className="container">
-        <h1>Dashboard</h1>
+      <div className="container d-flex justify-content-center align-items-center">
         <div className="card">
           <UploadFile onSuccess={handleFileUploadSuccess} />
           <div className="my-4">
             <FileList refreshFiles={refreshFiles} />
           </div>
         </div>
-        <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

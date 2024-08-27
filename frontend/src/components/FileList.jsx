@@ -58,33 +58,34 @@ const FileList = ({ refreshFiles }) => {
 
   return (
     <div className="">
-    <div className="">
-        <div className="header">
-            {/* <h2>File List</h2> */}
-        </div>
+      <div className="">
+        <div className="header"></div>
         <ul>
-            {files.map((file) => (
-                <li key={file.filename} className="d-flex justify-space-between gap-2">
-                    {file.filename}
-                    <div>
-                        <button
-                            onClick={() => downloadFile(file.filename)}
-                            className="btn btn-secondary"
-                        >
-                            Download
-                        </button>
-                        <button
-                            onClick={() => deleteFile(file.filename)}
-                            className="btn btn-secondary"
-                        >
-                            Delete
-                        </button>
-                    </div>
-                </li>
-            ))}
+          {files.map((file) => (
+            <li
+              key={file.filename}
+              className="d-flex justify-space-between align-items-center gap-2"
+            >
+              {file.filename}
+              <div className="d-flex gap-2 my-2 ">
+                <button
+                  onClick={() => downloadFile(file.filename)}
+                  className="btn btn-secondary"
+                >
+                  Download
+                </button>
+                <button
+                  onClick={() => deleteFile(file.filename)}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
         </ul>
+      </div>
     </div>
-</div>
   );
 };
 

@@ -1,4 +1,3 @@
-// backend/routes/dashboard.js
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
@@ -19,7 +18,6 @@ const authenticate = (req, res, next) => {
     });
 };
 
-// Upload a file
 router.post('/upload', authenticate, upload.single('file'), async (req, res) => {
     try {
         const file = new File({
@@ -35,7 +33,6 @@ router.post('/upload', authenticate, upload.single('file'), async (req, res) => 
     }
 });
 
-// Get list of files
 router.get('/files', authenticate, async (req, res) => {
     try {
         const files = await File.find({ user: req.user.id });
@@ -45,13 +42,11 @@ router.get('/files', authenticate, async (req, res) => {
     }
 });
 
-// Download a file
 router.get('/files/:filename', authenticate, (req, res) => {
     const filePath = path.join(__dirname, '..', 'uploads', req.params.filename);
     res.download(filePath);
 });
 
-// Delete a file
 router.delete('/files/:filename', authenticate, async (req, res) => {
     try {
         const file = await File.findOneAndDelete({ filename: req.params.filename, user: req.user.id });

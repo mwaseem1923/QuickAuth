@@ -15,24 +15,26 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <Link className="navbar-brand" to="/">MyApp</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/">Dashboard</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">Login</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/signup">Signup</Link>
-            </li>
           </ul>
           <ul className="navbar-nav ml-auto">
-            {user ? (
+            {!user ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signup">Signup</Link>
+                </li>
+              </>
+            ) : (
               <>
                 <li className="nav-item">
                   <span className="nav-link">Hello, {user.email}</span>
@@ -41,7 +43,7 @@ const Navbar = () => {
                   <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
                 </li>
               </>
-            ) : null}
+            )}
           </ul>
         </div>
       </div>

@@ -44,7 +44,7 @@ const UploadFile = ({onSuccess}) => {
                         onChange={handleFileChange}
                         className="input"
                     />
-                    <button type="submit" className="button button-primary">Upload</button>
+                    <button type="submit" className="btn btn-primary">Upload</button>
                 </form>
             </div>
         </div>

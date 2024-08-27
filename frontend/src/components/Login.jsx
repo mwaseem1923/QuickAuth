@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { setUser } from "../slices/userSlice";
-import { setToken } from "../utils/tokenUtils";
+import userSlice, { setUser } from "../slices/userSlice";
+import { isTokenExpired, setToken } from "../utils/tokenUtils";
+import Navbar from "./Navbar";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const user = useSelector((state) => state.user.user);
 
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -30,33 +33,42 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    if (!isTokenExpired() && user) {
+      navigate("/");
+    }
+  }, []);
+
   return (
-    <div className=" container">
-      <div className="card">
-        <div className="header">
-          <h2>Login</h2>
+    <div>
+      <Navbar />
+      <div className="main container">
+        <div className="card">
+          <div className="header">
+            <h2>Login</h2>
+          </div>
+          <form onSubmit={handleSubmit} className="flex flex-column">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              required
+              className="input"
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+              className="input"
+            />
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+          </form>
         </div>
-        <form onSubmit={handleSubmit} className="flex flex-column">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            required
-            className="input"
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-            className="input"
-          />
-          <button type="submit" className="button button-primary">
-            Login
-          </button>
-        </form>
       </div>
     </div>
   );
