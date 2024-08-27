@@ -1,4 +1,3 @@
-// backend/models/File.js
 const mongoose = require('mongoose');
 
 const FileSchema = new mongoose.Schema({
