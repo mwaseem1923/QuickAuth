@@ -59,18 +59,11 @@ Create a .env file in the frontend directory with the following content:
 
     REACT_APP_API_URL=http://localhost:5000/api
 
-
-# Start backend server
-    cd backend
+# Start Frontend and backend concurrently
     npm start
     # or
     yarn start
-
-# Start frontend client
-    cd ../frontend
-    npm start
-    # or
-    yarn start
+    
 
 
 The backend server will be available at http://localhost:5000, and the frontend client at http://localhost:3000.
